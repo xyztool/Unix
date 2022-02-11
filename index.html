@@ -1,0 +1,241 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="X-UA-Compatible" content="IE10">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"  />
+        <title>XYZ工具箱 - Unix时间戳转换</title>
+        <meta name="keywords" content="xyz8848,XYZ工具箱,时间戳，时间戳转换，unix时间戳转换，timestamp格式，时间戳工具，java时间戳，php时间戳，mysql时间戳,.net时间戳"/>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <link rel="bookmark" type="image/x-icon" href="favicon.ico"/>
+        <link rel="archives" title="时间戳" href="http://tool.xyz8848.com/"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript">window.onerror=function(){return true;} </script>
+        <script type="text/javascript" src="js/lang/zh-Hands/lang.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">var searchid = 13;</script>
+        <script type="text/javascript">
+        function removeElement(id)
+        {
+            document.getElementById(id).style.display="none";
+        }
+        </script>
+    </head>
+    <body>
+        <a href="https://github.com/xyztool/Unix" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+        <script type="text/javascript">var searchid = 13;</script>
+        <header> 
+            <h2><a href="http://tool.xyz8848.com/">时间戳</a></h2> 
+            <h1 style="font-size:18px; margin-bottom:5px;" >unix时间戳转换</h1> 
+        </header>
+        <link rel="stylesheet" href="css/unixtime.css">
+        <div class="container grid-sm s-content" style="height: auto !important;"> 
+            <div class="column col-12" style="background: rgb(255, 255, 255); border-radius: 5px; padding: 1px 15px; margin-bottom: 20px; height: auto !important;"> 
+                <article>
+                    <div class="content">
+                        <p>
+                            <span class="form_left">现在时间戳：</span><a id="js_timestamp_now" href="javascript:;">-</a>
+                            <a id="js_timer_start" href="javascript:;"><i class="fas fa-play"></i>开始</a>
+                            <a id="js_timer_stop" href="javascript:;" style="color: #E74C3C;"><i class="fas fa-stop"></i>停止</a>
+                        </p>
+                        <p>
+                            <span class="form_left">时间戳转日期:</span>
+                            <input type="text" class="text" id="js_timestamp"  name="timestamp">
+                            <select id="js_timestamp_unit" name="timestamp_unit">
+                                <option value="s">秒(s)</option>
+                                <option value="ms">毫秒(ms)</option>
+                            </select>
+                            <button id="js_convert_timestamp" type="button">转换<i class="fas fa-angle-double-right"></i></button>
+                            <input type="text" class="text" id="js_datetime" style="width:205px;" name="datetime"> 
+                        </p>
+                        <p>
+                            <span class="form_left">日期转时间戳:</span>
+                            <input type="text" class="text" id="js_datetime_o" style="width:205px;" name="datetime_o"> 
+                            <button id="js_convert_datetime" type="button">转换<i class="fas fa-angle-double-right"></i></button>
+                            <input type="text" class="text" id="js_timestamp_o" name="timestamp_o">
+                            <select id="js_timestamp_unit_o" name="timestamp_unit_o">
+                                <option value="s">秒(s)</option>
+                                <option value="ms">毫秒(ms)</option>
+                            </select>
+                        </p>
+                        <br/>
+                        <h3>在不同编程语言中获取现在的Unix时间戳(Unix timestamp)</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="info col-md-3"><b>Java</b></td>
+                                    <td>time</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>JavaScript</b></td>
+                                    <td>Math.round(new Date().getTime()/1000);<br>getTime()返回数值的单位是毫秒</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Microsoft .NET / C#</b></td>
+                                    <td>epoch = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>MySQL</b></td>
+                                    <td>SELECT unix_timestamp(now())</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Perl</b></td>
+                                    <td>time</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PHP</b></td>
+                                    <td>time()</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PostgreSQL</b></td>
+                                    <td>SELECT extract(epoch FROM now())</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Python</b></td>
+                                    <td>先 import time 然后 time.time()</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Ruby</b></td>
+                                    <td>获取Unix时间戳：Time.now 或 Time.new<br>显示Unix时间戳：Time.now.to_i</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>SQL Server</b></td>
+                                    <td>SELECT DATEDIFF(s, '1970-01-01 00:00:00', GETUTCDATE())</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Unix / Linux</b></td>
+                                    <td>date +%s</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>VBScript / ASP</b></td>
+                                    <td>DateDiff("s", "01/01/1970 00:00:00", Now())</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>其他操作系统</b><br><span>(如果Perl被安装在系统中)</span></td>
+                                    <td>命令行状态：perl -e "print time"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>在不同编程语言中实现Unix时间戳转普通时间</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="info col-md-3"><b>Java</b></td>
+                                    <td>String date = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date(<u>Unix timestamp</u> * 1000))</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>JavaScript</b></td>
+                                    <td><span>先</span> var unixTimestamp = new Date(<u>Unix timestamp</u> * 1000) <span>然后</span> commonTime = unixTimestamp.toLocaleString()</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Linux</b></td>
+                                    <td>date -d @<u>Unix timestamp</u></td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>MySQL</b></td>
+                                    <td>from_unixtime(<u>Unix timestamp</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Perl</b></td>
+                                    <td><span>先</span> my $time = <u>Unix timestamp</u> <span>然后</span> my ($sec, $min, $hour, $day, $month, $year) = (localtime($time))[0,1,2,3,4,5,6]</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PHP</b></td>
+                                    <td>date('r', <u>Unix timestamp</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PostgreSQL</b></td>
+                                    <td>SELECT TIMESTAMP WITH TIME ZONE 'epoch' + <u>Unix timestamp</u>) * INTERVAL '1 second';</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Python</b></td>
+                                    <td><span>先</span> import time <span>然后</span> time.gmtime(<u>Unix timestamp</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Ruby</b></td>
+                                    <td>Time.at(<u>Unix timestamp</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>SQL Server</b></td>
+                                    <td>DATEADD(s, <u>Unix timestamp</u>, '1970-01-01 00:00:00')</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>VBScript / ASP</b></td>
+                                    <td>DateAdd("s", <u>Unix timestamp</u>, "01/01/1970 00:00:00")</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>其他操作系统</b><br><span>(如果Perl被安装在系统中)</span></td>
+                                    <td><span>命令行状态：</span>perl -e "print scalar(localtime(<u>Unix timestamp</u>))"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>在不同编程语言中实现普通时间转Unix时间戳</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="info col-md-3"><b>Java</b></td>
+                                    <td>long epoch = new java.text.SimpleDateFormat("<u>dd/MM/yyyy HH:mm:ss</u>").parse("01/01/1970 01:00:00");</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>JavaScript</b></td>
+                                    <td>var commonTime = new Date(Date.UTC(<u>year</u>, <u>month</u> - 1, <u>day</u>, <u>hour</u>, <u>minute</u>, <u>second</u>))</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>MySQL</b></td>
+                                    <td> SELECT unix_timestamp(<u>time</u>)<br><span>时间格式: YYYY-MM-DD HH:MM:SS 或 YYMMDD 或 YYYYMMDD</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Perl</b></td>
+                                    <td><span>先</span> use Time::Local <span>然后</span> my $time = timelocal($sec, $min, $hour, $day, $month, $year);</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PHP</b></td>
+                                    <td>mktime(<u>hour</u>, <u>minute</u>, <u>second</u>, <u>month</u>, <u>day</u>, <u>year</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>PostgreSQL</b></td>
+                                    <td>SELECT extract(epoch FROM date('<u>YYYY-MM-DD HH:MM:SS</u>'));</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Python</b></td>
+                                    <td><span>先</span> import time <span>然后</span> int(time.mktime(time.strptime('<u>YYYY-MM-DD HH:MM:SS</u>', '%Y-%m-%d %H:%M:%S')))</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Ruby</b></td>
+                                    <td>Time.local(<u>year</u>, <u>month</u>, <u>day</u>, <u>hour</u>, <u>minute</u>, <u>second</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>SQL Server</b></td>
+                                    <td>SELECT DATEDIFF(s, '1970-01-01 00:00:00', <u>time</u>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>Unix / Linux</b></td>
+                                    <td>date +%s -d"Jan 1, 1970 00:00:01"</td>
+                                </tr>
+                                <tr>
+                                    <td class="info col-md-3"><b>VBScript / ASP</b></td>
+                                    <td>DateDiff("s", "01/01/1970 00:00:00", <u>time</u>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>什么是时间戳</h3>
+                        <p>Unix时间戳是从1970年1月1日(UTC/GMT的午夜)开始所经过的秒数，不考虑闰秒。Unix时间戳(英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp)</p>
+                    </div>
+                </article> 
+                <script type="text/javascript" src="js/utime.js"></script>
+                <script>
+                $(function () {
+                    $('#manual').addClass('current');
+                    $('#manual').parent('ul').addClass('in');
+                    })
+                </script>
+                <script src="js/effect.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

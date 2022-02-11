@@ -1,0 +1,14 @@
+.unixtime .form_left{
+    width: 72px;
+}
+.unixtime input.text {
+     width: 150px;
+     padding: 5px 3px;
+     line-height: 17px;
+     border: 1px solid #ccc;
+}
+.unixtime select {
+    height: 29px;
+    line-height: 29px;
+    width:50px;
+}
